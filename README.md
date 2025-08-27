@@ -1,14 +1,15 @@
 # FrontEnd
 
-This template should help get you started developing with Vue 3 in Vite.
+## Configuration
 
-## Recommended IDE Setup
+| Technology   | Version   |
+|--------------|-----------|
+| **Node.js**  | 22.18.0   |
+| **npm**      | 10.5.0    |
+| **Vue.js**   | 3.5.18    |
+| **Bootstrap**   | 5.3.7   |
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+[Backend] (https://github.com/ElWiido/Backend_Biblioteca)
 
 ## Project Setup
 
@@ -16,20 +17,22 @@ See [Vite Configuration Reference](https://vite.dev/config/).
 npm install
 ```
 
+## Install Vue
+
+```sh
+npm create vue@latest
+```
+
+
 ### Compile and Hot-Reload for Development
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+## ⚙️ IMPORTANT Environment Variables (.env)
 
-```sh
-npm run build
-```
+Create a `.env` file in the root of the project with the following structure:
 
-### Lint with [ESLint](https://eslint.org/)
+VITE_BACKEND_URL=your_url_backend
 
-```sh
-npm run lint
-```
