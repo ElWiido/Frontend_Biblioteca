@@ -1,0 +1,61 @@
+<div class="container mt-3">
+  <div class="bg-light border rounded-4 shadow-sm py-3 px-4 mb-4">
+  <h2 class="text-center mb-0 fw-bold mt-5">
+      <i class="bi bi-people-fill me-2 text-primary"></i> Lista de Usuarios
+    </h2>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12 col-md-4">
+      <input type="text" class="form-control" placeholder="Buscar" v-model="busqueda">
+    </div>
+    <div class="col-12 col-md-8 d-flex justify-content-end align-items-center">
+        <router-link to="/registro" class="btn btn-success">
+          <i class="bi bi-plus-circle me-2"></i> Registrar
+        </router-link>
+    </div>
+  </div>
+  <div class="row g-4 mt-2">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" v-for="usuario in usuariosFiltrados" :key="usuario.usuario_id">
+      <div class="card h-100 shadow-lg rounded-4 bg-light border-0 card-hover" @click="verUsuario(usuario.usuario_id)" style="cursor:pointer;">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center p-4">
+          <i class="bi bi-person display-3 text-primary mb-3"></i>
+          <h4 class="card-title text-center fw-bold mb-2">{{ usuario.nombre }}</h4>
+          <hr class="w-50 my-2">
+          <p class="card-text mb-1"><span class="fw-semibold text-secondary">Id:</span> {{ usuario.usuario_id }}</p>
+          <p class="card-text mb-1"><span class="fw-semibold text-secondary">apellido:</span> {{ usuario.apellido }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Modal para mostrar información completa del libro -->
+  <div class="modal fade show" tabindex="-1" style="display: block; background: rgba(0,0,0,0.5);" v-if="mostrarModal">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <i class="bi bi-book-half me-2"></i>
+            {{ usuarioSeleccionado?.nombre || 'Cargando...' }}
+          </h5>
+          <button type="button" class="btn-close" @click="cerrarModal"></button>
+        </div>
+        <div class="modal-body" v-if="usuarioSeleccionado">
+          <p><strong>Id:</strong> {{ usuarioSeleccionado.usuario_id }}</p>
+          <p><strong>Nombre:</strong> {{ usuarioSeleccionado.nombre }}</p>
+          <p><strong>Apellido:</strong> {{ usuarioSeleccionado.apellido }}</p>
+          <p><strong>Correo:</strong> {{ usuarioSeleccionado.correo }}</p>
+          <p><strong>Telfono:</strong> {{ usuarioSeleccionado.telefono }}</p>
+          <p><strong>Direccion:</strong> {{ usuarioSeleccionado.direccion }}</p>
+        </div>
+        <div class="modal-body text-center" v-else>
+          <div class="spinner-border text-primary" role="status">
+            <span class="visualmente-hidden">Cargando...</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" @click="prestarModal">Editar</button>
+          <button type="button" class="btn btn-danger" @click="cerrarModal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

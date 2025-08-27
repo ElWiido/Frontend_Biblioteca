@@ -1,0 +1,64 @@
+@import './base.css';
+
+/* Efecto hover para cualquier tarjeta */
+.card-hover {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.card-hover:hover {
+  box-shadow: 0 0.25rem 0.5rem rgba(0,123,255,0.08), 0 0.0625rem 0.125rem rgba(0,0,0,0.04);
+  transform: translateY(-2px) scale(1.01);
+}
+
+
+/* Contenedor para scroll y sticky header en la tabla*/
+.tabla-scroll {
+  max-height: 500px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+/* Tabla más ancha y títulos sticky reutilizable */
+.tabla-sticky {
+  min-width: 700px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  table-layout: auto;
+}
+.tabla-sticky thead th {
+  position: sticky;
+  top: 0;
+  background: #212529;
+  color: #fff;
+  z-index: 10;
+  box-shadow: 0 2px 2px -1px rgba(0,0,0,0.1);
+}
+.tabla-sticky thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  html, body {
+    height: 100%;
+  }
+  /* Eliminar centrado vertical y min-height en body y #app */
+  #app {
+    padding: 0 2rem;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,67 @@
+<div class="container mt-5" style="max-width: 600px;">
+
+  <!-- Encabezado -->
+  <div class="bg-light border rounded-4 shadow-sm py-3 px-3 mb-3 text-center">
+    <h2 class="fw-bold text-primary mb-0">
+      <i class="bi bi-person-plus-fill me-2"></i> Registrar Usuario
+    </h2>
+  </div>
+
+  <form @submit.prevent="crearUsuario" class="bg-white p-4 rounded-4 shadow-sm">
+
+    <div class="row g-3 mb-3">
+      <div class="col">
+        <label class="form-label fw-semibold">Nombre</label>
+        <input type="text" class="form-control" v-model="usuarioForm.nombre" required>
+      </div>
+      <div class="col">
+        <label class="form-label fw-semibold">Apellido</label>
+        <input type="text" class="form-control" v-model="usuarioForm.apellido" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Correo</label>
+      <input type="email" class="form-control" v-model="usuarioForm.correo" required>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col">
+        <label class="form-label fw-semibold">Teléfono</label>
+        <input type="text" class="form-control" v-model="usuarioForm.telefono">
+      </div>
+      <div class="col">
+        <label class="form-label fw-semibold">Dirección</label>
+        <input type="text" class="form-control" v-model="usuarioForm.direccion">
+      </div>
+    </div>
+
+    <!-- Botón guardar -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-success px-5 shadow-sm" :disabled="loading">
+        <span v-if="loading" class="spinner-border spinner-border-sm me-2"></span>
+        Crear Usuario
+      </button>
+    </div>
+  </form>
+  <!-- Modal pequeño -->
+  <div v-if="mostrarModal" 
+      class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center"
+      style="background: rgba(0,0,0,0.4); z-index: 2000;">
+    <div class="bg-white rounded-4 shadow-lg p-4 text-center" style="max-width: 350px; width: 100%;">
+      
+      <div class="d-flex justify-content-center mb-3">
+        <i v-if="modalTipo === 'success'" class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+        <i v-else class="bi bi-x-circle-fill text-danger" style="font-size: 3rem;"></i>
+      </div>
+
+      <h5 class="fw-bold mb-2">
+        {{ modalTipo === 'success' ? "Éxito" : "Error" }}
+      </h5>
+      <p class="mb-3">{{ modalMensaje }}</p>
+      <button class="btn btn-sm btn-primary px-4" @click="cerrarModal">
+        Aceptar
+      </button>
+    </div>
+  </div>
+</div>
